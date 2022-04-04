@@ -1,7 +1,7 @@
 const initialState = {
   posts: [
     {
-      id: 1,
+      id: '1',
       title: 'Article title',
       author: 'John Doe',
       publishedDate: '02-02-2022',
@@ -10,7 +10,7 @@ const initialState = {
     },
 
     {
-      id: 2,
+      id: '2',
       title: 'Article title II',
       author: 'Jane Doe',
       publishedDate: '01-04-2022',
@@ -19,7 +19,7 @@ const initialState = {
     },
 
     {
-      id: 3,
+      id: '3',
       title: 'Article title III',
       author: 'John Smith',
       publishedDate: '08-01-2022',

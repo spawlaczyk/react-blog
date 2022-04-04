@@ -11,7 +11,7 @@ const RenderPosts = () => {
       {posts.map(post => (
         <Col key={post.id}>
           <Card key={post.id} className='p-3'>
-            <Card.Title className='mb-3'>{post.title}</Card.Title>
+            <Card.Title className='mb-3'><h3>{post.title}</h3></Card.Title>
             <Card.Text className='mb-1'>
               <b>Author: </b><span>{post.author}</span>
             </Card.Text>
