@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 
 const PostForm = ({action, actionText, ...props}) => {
   const [title, setTitle] = useState(props.title || '');
@@ -37,7 +39,7 @@ const PostForm = ({action, actionText, ...props}) => {
 
       <Form.Group className='mb-3' controlId='formContent'>
         <Form.Label>Main content</Form.Label>
-        <Form.Control as='textarea' rows={10} type='text' placeholder='Leave a comment here' required value={content} onChange={e => setContent(e.target.value)} />
+        <ReactQuill theme='snow' type='text' placeholder='Leave a comment here' value={content} onChange={setContent} />
       </Form.Group>
 
       <Button type='submit'>{actionText}</Button>

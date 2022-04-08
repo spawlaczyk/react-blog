@@ -30,7 +30,7 @@ const Post = () => {
               <Card.Text>
                 <b>Published: </b><span>{postData.publishedDate}</span>
               </Card.Text>
-              <Card.Text>{postData.content}</Card.Text>
+              <Card.Text dangerouslySetInnerHTML={{ __html: postData.content }} />
             </Card>
           </Col>
           <Col md={2}>
