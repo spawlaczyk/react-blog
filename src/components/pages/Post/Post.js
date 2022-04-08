@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { getPostById, removePost } from "../../../redux/postsRedux";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import dateToStr from "../../../utils/dateToStr";
 
 const Post = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ const Post = () => {
                 <b>Author: </b><span>{postData.author}</span>
               </Card.Text>
               <Card.Text>
-                <b>Published: </b><span>{postData.publishedDate}</span>
+                <b>Published: </b><span>{dateToStr(postData.publishedDate)}</span>
               </Card.Text>
               <Card.Text dangerouslySetInnerHTML={{ __html: postData.content }} />
             </Card>
