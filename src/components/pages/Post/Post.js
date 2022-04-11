@@ -28,8 +28,11 @@ const Post = () => {
               <Card.Text className='mb-1'>
                 <b>Author: </b><span>{postData.author}</span>
               </Card.Text>
-              <Card.Text>
+              <Card.Text className='mb-1'>
                 <b>Published: </b><span>{dateToStr(postData.publishedDate)}</span>
+              </Card.Text>
+              <Card.Text>
+                <b>Category: </b><span>{postData.category}</span>
               </Card.Text>
               <Card.Text dangerouslySetInnerHTML={{ __html: postData.content }} />
             </Card>

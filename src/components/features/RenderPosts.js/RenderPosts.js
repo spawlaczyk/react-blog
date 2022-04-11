@@ -16,10 +16,15 @@ const RenderPosts = () => {
             <Card.Text className='mb-1'>
               <b>Author: </b><span>{post.author}</span>
             </Card.Text>
-            <Card.Text>
+            <Card.Text className='mb-1'>
               <b>Published: </b><span>{dateToStr(post.publishedDate)}</span>
             </Card.Text>
-            <Card.Text>{post.shortDescription}</Card.Text>
+            <Card.Text>
+              <b>Category: </b><span>{post.category}</span>
+            </Card.Text>
+            <Card.Text>
+              {post.shortDescription}
+            </Card.Text>
             <div>
               <Button size='md' as={NavLink} to={'/post/' + post.id}>Read more</Button>
             </div>

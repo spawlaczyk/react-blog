@@ -5,6 +5,8 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form';
+import { useSelector } from "react-redux";
+import { getAllCategories } from "../../../redux/categoriesRedux";
 
 
 const PostForm = ({action, actionText, ...props}) => {
@@ -13,15 +15,17 @@ const PostForm = ({action, actionText, ...props}) => {
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || new Date());
   const [shortDescription, setshortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
+  const [category, setCategory] = useState(props.category);
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
+  const categories = useSelector(getAllCategories);
 
   const handleSubmit = () => {
     setContentError(!content)
     setDateError(!publishedDate)
     if(content && publishedDate) {
-      action({ title, author, publishedDate, shortDescription, content });
+      action({ title, author, publishedDate, shortDescription, content, category });
     }
   }
 
@@ -50,6 +54,16 @@ const PostForm = ({action, actionText, ...props}) => {
         <DatePicker selected={publishedDate} 
         onChange={(date) => setPublishedDate(date)} />
         {dateError && <small className='d-block form-text text-danger mt-2'>This field is required</small>}
+      </Form.Group>
+
+      <Form.Group className='mb-3' controlId='formDate'>
+        <Form.Label>Category</Form.Label>
+        <Form.Select value={category} onChange={e => setCategory(e.target.value)}>
+          <option>Select category...</option>
+          {categories.map(category => (
+            <option key={category}>{category}</option>
+          ))}
+        </Form.Select>
       </Form.Group>
 
       <Form.Group className='mb-3' controlId='formDescription'>
